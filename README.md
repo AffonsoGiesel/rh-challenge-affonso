@@ -7,10 +7,13 @@ Siga as instruções definidas na [wiki](https://gitlab.com/Siedos/rh-challenge-
 > [fabio.pina@siedos.com.br](mailto:fabio.pina@siedos.com.br) ou [joao.carlos@siedos.com.br](mailto:joao.carlos@siedos.com.br)
 
 
-> Notas para levantar o projeto:
+Notas para levantar o projeto:
 
-> Use Ruby 2.7.1 e Rails 5.1.4. Certifique de usar a versão correta do Ruby via rvm com o comando 'rvm use 2.7.1'.
-> Rode o comando 'bundle install'
-> Rode o comando 'yarn install'
-> Rode o comando 'rails s' e abra o navegador em 'http://localhost:3000/'
+1 - Use Ruby 2.7.1 e Rails 5.1.4. Certifique de usar a versão correta do Ruby via rvm com o comando 'rvm use 2.7.1'.
+
+2 - Rode o comando 'bundle install'
+
+3 - Rode o comando 'yarn install'
+
+4 - Rode o comando 'rails s' e abra o navegador em 'http://localhost:3000/'
 
