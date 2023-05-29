@@ -1,0 +1,176 @@
+<%= form_with(model: funcionario, local: true) do |form| %>
+  <% if funcionario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(funcionario.errors.count, "error") %> prohibited this funcionario from being saved:</h2>
+
+      <ul>
+      <% funcionario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+     <div class="field item form-group">
+              <%= form.label :nome, class: "col-form-label col-md-3 col-sm-3 label-align asteriscoRequired"%>
+               <div class="col-md-6 col-sm-6 ">
+                  <%= form.text_field :nome, id: :funcionario_nome , class:"form-control", :required => 'required' %>
+              </div>
+      </div>
+
+     <div class="field item form-group">
+              <%= form.label :matricula, class: "col-form-label col-md-3 col-sm-3 label-align asteriscoRequired"%>
+               <div class="col-md-6 col-sm-6 ">
+                  <%= form.text_field :matricula, id: :funcionario_matricula , class:"form-control",  :required => 'required' %>
+              </div>
+      </div>
+
+     <div class="field item form-group">
+              <%= form.label :data_nascimento, class: "col-form-label col-md-3 col-sm-3 label-align"%>
+               <div class="col-md-6 col-sm-6 ">
+                  <%= form.date_field :data_nascimento, id: :funcionario_data_nascimento , class:"form-control date-picker form-control"%>
+              </div>
+      </div>
+
+        <div class="item form-group">
+          <label class="col-form-label col-md-3 col-sm-3 label-align">Sexo</label>
+          <div class="col-md-6 col-sm-6 ">
+            <div id="gender" class="btn-group" data-toggle="buttons">
+              <label class="btn btn-secondary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                <input type="radio" name="funcionario[sexo]" value="Masculino" class="join-btn" data-parsley-multiple="gender"> &nbsp; Masculino &nbsp;
+              </label>
+              <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                <input type="radio" name="funcionario[sexo]" value="Feminino" class="join-btn" data-parsley-multiple="gender"> Feminino
+              </label>
+            </div>
+          </div>
+        </div>
+
+      <div class="field item form-group">
+              <%= form.label :municipio_nascimento, class: "col-form-label col-md-3 col-sm-3 label-align"%>
+               <div class="col-md-6 col-sm-6 ">
+                  <%= form.text_field :municipio_nascimento, id: :funcionario_municipio_nascimento , class:"form-control"%>
+              </div>
+      </div>
+            
+<div class="form-group row">
+											<%= form.label :estado_nascimento, class: "col-form-label col-md-3 col-sm-3 label-align"%>
+											<div class="col-md-9 col-sm-9 ">
+												<select name="funcionario[estado_nascimento]" class="select2_group form-control">
+													<% @estados.each do |estado| %>
+                          <option><%= estado %></option>
+                          <% end %>
+												</select>
+											</div>
+										</div>
+
+<!-- Primeira versão do estado civil
+
+      <div class="field item form-group">
+              <%= form.label :estado_civil, class: "col-form-label col-md-3 col-sm-3 label-align"%>
+               <div class="col-md-6 col-sm-6 ">
+                  <%= select(:funcionario, :estado_civil,  [['Solteiro(a)'], ['Casado(a)'],
+                  ['Divorciado(a)'], ['Viúvo(a)']] , class:"form-control") %>
+              </div>
+      </div>
+-->
+      <div class="form-group row">
+											<%= form.label :estado_civil, class: "col-form-label col-md-3 col-sm-3 label-align"%>
+											<div class="col-md-9 col-sm-9 ">
+												<select name="funcionario[estado_civil]" class="select2_group form-control">
+													<% @estadocivil.each do |estadocivil| %>
+                          <option><%= estadocivil %></option>
+                          <% end %>
+												</select>
+											</div>
+										</div>
+
+      <div class="form-group row">
+											<%= form.label :workspace, class: "col-form-label col-md-3 col-sm-3 label-align asteriscoRequired"%>
+											<div class="col-md-9 col-sm-9 ">
+												  <%= form.select("workspace_id", @workspace_options, {include_blank: true}, class:"form-group form-control", :required => 'required') %>
+												</select>
+											</div>
+										</div>
+                    
+<!--Versão inicial do campo de Workspace -->
+<!--
+<div class="field">
+    <%= form.label :workspace_id %>
+    <%= form.select("workspace_id", @workspace_options, {include_blank: true}, class:"form-group form-control") %>
+  </div>
+-->
+
+
+      <div class="form-group row">
+											<%= form.label :job_role, class: "col-form-label col-md-3 col-sm-3 label-align asteriscoRequired"%>
+											<div class="col-md-9 col-sm-9 ">
+												  <%= form.select("job_role_id", @job_role_options, {include_blank: true}, class:"form-group form-control", :required => 'required') %>
+												</select>
+											</div>
+										</div>
+
+
+
+
+<%= simple_form_for(@funcionario) do |f| %>
+  <%= f.error_notification %>
+
+  <table class='table'>
+<thead>
+   <th><%= link_to_add_row('Adicionar novo campo de Email', f, :emails) %>
+    </th><th>
+    <%= link_to_add_row('Adicionar novo campo de Telefone', f, :telefones) %>
+    </th><th>
+    
+    <%= link_to_add_row('Adicionar novo campo de Celular', f, :celulars) %>
+ </th>
+ </thead>
+    <tbody class='fields'>
+      
+      <%= f.simple_fields_for :emails do |builder| %>
+        <%= render 'email', f: builder %>
+      <% end %>
+
+      <%= f.simple_fields_for :telefones do |builder| %>
+        <%= render 'telefone', f: builder %>
+      <% end %>
+
+        <%= f.simple_fields_for :celulars do |builder| %>
+        <%= render 'celular', f: builder %>
+      <% end %>
+
+    </tbody>
+  </table>
+
+  <div class="form-actions">
+
+
+<%= button_tag type: 'submit', class: "btn btn-success" do %>
+    <i class="fa fa-check" aria-hidden="true"></i> Confirmar
+<% end %>
+
+    </div>
+<% end %>
+
+
+
+
+
+
+
+
+<!-- Botão padrão de submit -->
+
+ <!--  <div class="actions">
+    <%= form.submit "Confirmar", :class => 'btn btn-primary' do %>
+    <% end %>
+    </div>
+-->
+
+ <!-- Trocando o botão de submit por um HTML com o valor do ícone do font awesome  -->
+<!--
+<input  class="btn btn-success fa-input" name="commit" type="submit" value="&#xf00c Confirmar" />
+
+<% end %>
+-->

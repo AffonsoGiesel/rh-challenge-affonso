@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  funcionario: one
+  endereço_email: MyString
+
+two:
+  funcionario: two
+  endereço_email: MyString

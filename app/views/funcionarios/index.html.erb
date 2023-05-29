@@ -1,0 +1,154 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Funcionarios</h1>
+
+<table>
+  <thead>
+
+<!--Radio buttons para carregar as partials das barras de pesquisa -->
+
+<div class="row">
+    <div class="col-sm-12 text-left">
+        
+        <%=label(:nome, "Pesquisar por Nome")%>
+        <%=  radio_button :model, :field, :true, :onclick => "render_partial_nome();" %>
+        
+        <%=label(:matricula, "Pesquisar por Matrícula")%>
+        <%=  radio_button :model, :field, :true, :onclick => "render_partial_matricula();" %>
+
+     </div>
+</div>
+        
+<%#= render "/searchmatricula" %>
+
+
+<!-- Barra de pesquisa por nome -->
+<!--
+                <div class="title_right col-md-5 col-sm-5   form-group pull-right top_search">
+                  <div class="input-group">
+                        <%= form_tag(funcionarios_path, method: :get) do %>
+                        <%= text_field_tag :nome, "", class: 'form-control', placeholder:"Pesquisar..." %>
+                     <% end %>
+                  </div>
+                </div>
+              </div>
+-->
+
+    
+<!-- Barra de pesquisa por matrícula -->
+
+    <%#= form_tag(funcionarios_path, method: :get) do %>
+    <%#= text_field_tag(:matricula, params[:matricula]) %>
+    <%#=submit_tag ("Pesquisar por Matrícula") %>
+
+    <%# end %>
+
+<div class="row">
+    <div class="col-sm-12 text-left">
+    <!--Partial onde é renderizada as barras de pesquisa -->
+        <div id="partial-area">Selecione uma opção de pesquisa ou filtro ...</div>
+
+        
+<!-- Botão dropdown dos filtros -->
+<div class="btn-group show dropdown pull-xl-left">
+    <button type="button" class="btn btn-primary dropdown-toggle dropbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Filtros
+    </button>
+    <div class="dropdown-menu dropdown-content" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+      <a class="dropdown-item" href="/">Remover Filtros</a>
+      <a class="dropdown-item" href="?sexo=Feminino">Filtrar por Sexo Feminino</a>
+      <a class="dropdown-item" href="?sexo=Masculino">Filtrar por Sexo Masculino</a>
+      <a class="dropdown-item" href="/">Filtrar por Cargo (a fazer)</a>
+      <a class="dropdown-item" href="/">Filtrar por Lotação (a fazer)</a>
+    </div>
+</div>
+
+
+
+
+
+      </div>
+</div>
+
+<!-- Table para mostrar Funcionários -->
+<div class="col-md-6 col-sm-6  ">
+                
+                  
+                  <div class="x_content">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Nome</th>
+                          <th>Matricula</th>
+                          <th>Data nascimento</th>
+                          <th>Sexo</th>
+                          <th>Workspace</th>
+                          <th>Job Role</th>
+                          <th colspan="3"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                      <% @funcionarios.each do |funcionario| %>
+
+
+                        <tr>
+                            <td><%= funcionario.nome %></td>
+                            <td><%= funcionario.matricula %></td>
+                            <td><%= funcionario.data_nascimento %></td>
+                            <td><%= funcionario.sexo %></td>
+                            <!-- Acessando os atributos delegados usando underline -->
+                            <td><%= funcionario.workspace_title%></td>
+                            <td><%= funcionario.job_role_title%></td>
+
+
+<!-- Botão de Visualizar -->
+
+        <td><%= link_to   funcionario_path(funcionario.id), class:"btn btn-success btn-circle" do %>
+                    <i class="fa fa-eye"></i>
+                    <% end %>
+        </td>  
+
+<!-- Botão de Editar -->
+
+        <td><%= link_to  edit_funcionario_path(funcionario.id), class:"btn btn-primary btn-circle" do %>
+                    <i class="fa fa-edit"></i>
+                    <% end %>
+        </td>    
+
+<!-- Botão de Apagar -->
+
+        <td><%= link_to  funcionario, method: :delete, data: { confirm: 'Você tem certeza de que deseja realizar essa ação?' }, class:"btn btn-danger btn-circle" do %>
+                    <i class="fa fa-trash"></i>
+                    <% end %>
+        </td> 
+
+                        </tr>
+    <% end %>
+
+                      </tbody>
+                    </table>
+
+                  </div>
+                
+              </div>
+
+<!-- Botão de Novo Funcionário -->
+<td><%= link_to  new_funcionario_path, class:"btn btn-primary btn-circle" do %>
+    Novo Funcionário
+    <% end %>
+</td> 
+
+
+<script>
+
+function render_partial_nome() {
+  $('#partial-area').html('<%=j render :partial => "/searchnome" %>')
+}
+
+function render_partial_matricula() {
+  $('#partial-area').html('<%=j render :partial => "/searchmatricula" %>')
+}
+
+</script>
+

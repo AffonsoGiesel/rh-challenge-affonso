@@ -1,0 +1,14 @@
+<tr>
+  <td>
+      <%= f.label :celular, class: "col-form-label col-md-3 col-sm-3 label-align asteriscoRequired"%>
+      <%= f.input_field :_destroy, as: :hidden %>
+      <%#= link_to 'Delete', '#', class: 'remove_record' %>
+      <%= link_to nil, class: 'pull-right btn btn-danger dtn-circle remove_record' do %>
+          <i class="fa fa-trash"></i>
+      <% end %>
+  </td>
+
+  <td>
+  <%= f.input :numero_celular, label: false, required: true, input_html: { class: 'form-control' } %></td>
+  
+</tr>

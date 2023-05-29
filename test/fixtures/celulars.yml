@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  funcionario: one
+  numero_celular: MyString
+
+two:
+  funcionario: two
+  numero_celular: MyString

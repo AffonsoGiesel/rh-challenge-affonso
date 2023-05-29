@@ -1,0 +1,11 @@
+<h1>Editing Funcionario</h1>
+
+<!--Render dentro da div para alinhar os botões de confirmar(de dentro do form) e voltar-->
+
+<div class="row">
+    <div class="col-sm-12 text-left">
+        <%= render 'form', funcionario: @funcionario %>
+        <%= link_to 'Voltar', funcionarios_path, class:"btn btn-primary btn-circle"  %>
+      </div>
+</div>
+

@@ -1,0 +1,20 @@
+{
+  "name": "rh_challenge",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "4.3.0",
+    "bootstrap": "4.3.1",
+    "fastclick": "^1.0.6",
+    "font-awesome": "4.6.3",
+    "jquery": "2.2.4",
+    "nprogress": "^0.2.0"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitlab.com:Siedos/rh-challenge-affonso.git",
+  "author": "Affonso <affonsogiesel19@hotmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.2"
+  }
+}

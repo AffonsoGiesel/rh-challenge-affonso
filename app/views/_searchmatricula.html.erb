@@ -1,0 +1,10 @@
+<!-- Barra de pesquisa por Matrícula -->
+
+                <div class="title_right col-md-5 col-sm-5   form-group pull-right top_search">
+                  <div class="input-group">
+                        <%= form_tag(funcionarios_path, method: :get) do %>
+                        <%= text_field_tag :matricula, "", class: 'form-control', placeholder:"Pesquisar..." %>
+                     <% end %>
+                  </div>
+                </div>
+              </div>

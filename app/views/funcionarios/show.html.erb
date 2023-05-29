@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @funcionario.nome %>
+</p>
+
+<p>
+  <strong>Matricula:</strong>
+  <%= @funcionario.matricula %>
+</p>
+
+<p>
+  <strong>Data nascimento:</strong>
+  <%= @funcionario.data_nascimento %>
+</p>
+
+<p>
+  <strong>Sexo:</strong>
+  <%= @funcionario.sexo %>
+</p>
+
+<p>
+  <strong>Municipio nascimento:</strong>
+  <%= @funcionario.municipio_nascimento %>
+</p>
+
+<p>
+  <strong>Estado nascimento:</strong>
+  <%= @funcionario.estado_nascimento %>
+</p>
+
+<p>
+  <strong>Estado civil:</strong>
+  <%= @funcionario.estado_civil %>
+</p>
+
+<p>
+  <strong>Workspace:</strong>
+  <%= @funcionario.workspace.title %>
+</p>
+
+<p>
+  <strong>Job_Role:</strong>
+  <%= @funcionario.job_role.title %>
+</p>
+
+<p>
+  <strong>Emails:</strong>
+ <% @funcionario.emails.each do |email| %>
+   <p><%= email.endereço_email %></p>
+ <% end %>
+</p>
+
+<p>
+  <strong>Telefones:</strong>
+ <% @funcionario.telefones.each do |telefone| %>
+   <p><%= telefone.numero_telefone %></p>
+ <% end %>
+</p>
+
+<p>
+  <strong>Celulares:</strong>
+ <% @funcionario.celulars.each do |celular| %>
+   <p><%= celular.numero_celular %></p>
+ <% end %>
+</p>
+
+
+<td><%= link_to funcionario_path, method: :delete, data: { confirm: 'Você tem certeza de que deseja realizar essa ação?' }, class:"btn btn-danger btn-circle" do %>
+<i class="fa fa-trash"></i> Excluir
+ <% end %>
+</td> 
+      
+<td><%= link_to edit_funcionario_path(@funcionario), class:"btn btn-success btn-circle"  do %>
+<i class="fa fa-edit"></i> Editar
+<% end %>
+</td>
+
+<%= link_to 'Voltar', funcionarios_path, class:"btn btn-primary btn-circle"  %>
